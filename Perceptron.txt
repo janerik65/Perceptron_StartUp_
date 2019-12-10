@@ -1,0 +1,66 @@
+//***
+	InitialiseWeights();
+
+	for (int e = 0; e < epochs; e++)
+	{
+		totalError = 0;
+		for (int t = 0; t < ts_count; t++)
+		{
+			UpdateWeights(t);
+			std::cout << "W1: " << (weights[0]) << " W2: " << (weights[1]) << " B: " << bias << std::endl;
+		}
+		std::cout << "Epoch#: " <<e << "...TOTAL ERROR: " << totalError << std::endl;
+	}
+
+//***
+
+	srand(time(NULL));
+
+	for (int i = 0; i < weights_count; i++)
+	{
+		weights[i] = ((double(rand()) / double(RAND_MAX)) * (1.0 - (-1.0))) + (-1.0);
+	}
+	bias = ((double(rand()) / double(RAND_MAX)) * (1.0 - (-1.0))) + (-1.0);
+
+//***
+
+	double error = ts[j].output - CalcOutput(j);
+	totalError += fabs((float)error);
+	for (int i = 0; i < weights_count; i++)
+	{
+		weights[i] = weights[i] + error * ts[j].input[i];
+	}
+	bias += error;
+
+//***
+
+	double dp = DotProductBias(weights, ts[i].input);
+	if (dp > 0) return(1);
+	return (0);
+
+//***
+	if (v1 == NULL || v2 == NULL)
+		return -1;
+
+	double d = 0;
+	for (int x = 0; x < TrainingSet::INPUT_COUNT; x++)
+	{
+		d += v1[x] * v2[x];
+	}
+
+	d += bias;
+
+	return d;
+
+//***
+
+	double inp [2];
+	inp[0] = i1;
+	inp[1] = i2;
+
+	int inp_count = 2;
+	double dp = DotProductBias(weights, inp);
+	if (dp > 0) return(1);
+	return (0);
+
+//***
