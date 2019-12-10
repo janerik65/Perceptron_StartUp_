@@ -43,6 +43,6 @@ void main()
 	std::cout << "Test 0 1: " << p.CalcOutput(0, 1) << std::endl;
 	std::cout << "Test 1 0: " << p.CalcOutput(1, 0) << std::endl;
 	std::cout << "Test 1 1: " << p.CalcOutput(1, 1) << std::endl;
-	std::cout << "HEEEEI nr2" << std::endl;
+	std::cout << "HEEEEI nr3" << std::endl;
 	getchar();
 }
